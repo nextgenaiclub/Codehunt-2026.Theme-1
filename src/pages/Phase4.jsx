@@ -61,7 +61,7 @@ export default function Phase4({ team, setTeam }) {
                     <p style={{ color: '#FFD700', fontFamily: 'Orbitron', fontSize: '0.9rem', marginBottom: '10px' }}>
                         📍 NEXT LOCATION
                     </p>
-                    <h1 style={{ fontSize: '2rem', margin: 0 }}>Room 2101 & 2012 Labs</h1>
+                    <h1 style={{ fontSize: '2rem', margin: 0 }}>VU 2nd Building – Under a Plant</h1>
                 </div>
                 <br />
                 <p style={{ color: '#FFD700', fontSize: '1.1rem' }}>Scan the next QR code to continue.</p>
@@ -85,7 +85,7 @@ export default function Phase4({ team, setTeam }) {
                     <p style={{ color: '#FFD700', fontFamily: 'Orbitron', fontSize: '0.85rem', marginBottom: '8px' }}>
                         📍 NEXT LOCATION
                     </p>
-                    <h2 style={{ fontSize: '1.5rem', margin: 0, color: '#fff' }}>Room 2101 & 2012 Labs</h2>
+                    <h2 style={{ fontSize: '1.5rem', margin: 0, color: '#fff' }}>VU 2nd Building – Under a Plant</h2>
                 </div>
             </div>
         )
