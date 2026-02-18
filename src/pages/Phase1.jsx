@@ -158,12 +158,7 @@ export default function Phase1({ team, setTeam }) {
                     <ul style={{ paddingLeft: '20px', lineHeight: 2 }}>
                         <li>Use any AI tool: DALL-E, Midjourney, Stable Diffusion, Leonardo AI, etc.</li>
                         <li>Theme: Imagine VU campus in the year 2050 - futuristic, innovative, tech-forward</li>
-                        <li>
-                            Upload your "VU IN 2050" image to the shared Google Drive folder:{' '}
-                            <a href="https://drive.google.com/drive/u/4/folders/1pPC6zKBVIxQbmEVOz1as6KyU7NR021Rg" target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', textDecoration: 'underline' }}>
-                                Upload Here
-                            </a>
-                        </li>
+                        <li>Upload your "VU IN 2050" image to the shared Google Drive folder below</li>
                         <li>Your prompt MUST contain the keyword "VU2050"</li>
                     </ul>
                 </div>
