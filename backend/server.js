@@ -187,14 +187,10 @@ async function createTeam(teamId, teamData) {
 // Get all teams
 async function getAllTeams() {
     if (useFirebase) {
-        const snapshot = await db.collection('teams')
-            .orderBy('createdAt', 'desc')
-            .get();
+        const snapshot = await db.collection('teams').get();
         return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     } else {
-        return Array.from(teamsDB.values()).sort((a, b) =>
-            new Date(b.createdAt) - new Date(a.createdAt)
-        );
+        return Array.from(teamsDB.values());
     }
 }
 
@@ -203,15 +199,12 @@ async function getCompletedTeams() {
     if (useFirebase) {
         const snapshot = await db.collection('teams')
             .where('phase6.completed', '==', true)
-            .orderBy('totalTimeSeconds', 'asc')
             .limit(10)
             .get();
         return snapshot.docs.map(doc => ({
             teamId: doc.id,
             teamName: doc.data().teamName,
-            teamLeader: doc.data().teamLeader,
-            totalTimeSeconds: doc.data().totalTimeSeconds,
-            finalCompletionTime: doc.data().finalCompletionTime
+            teamLeader: doc.data().teamLeader
         }));
     } else {
         const completedTeams = [];
@@ -220,13 +213,11 @@ async function getCompletedTeams() {
                 completedTeams.push({
                     teamId: team.teamId,
                     teamName: team.teamName,
-                    teamLeader: team.teamLeader,
-                    totalTimeSeconds: team.totalTimeSeconds,
-                    finalCompletionTime: team.finalCompletionTime
+                    teamLeader: team.teamLeader
                 });
             }
         }
-        return completedTeams.sort((a, b) => a.totalTimeSeconds - b.totalTimeSeconds).slice(0, 10);
+        return completedTeams.slice(0, 10);
     }
 }
 
@@ -485,7 +476,6 @@ app.post('/api/teams/register', async (req, res) => {
         }
 
         const teamId = 'TEAM_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-        const now = new Date().toISOString();
 
         const team = {
             teamId,
@@ -495,14 +485,12 @@ app.post('/api/teams/register', async (req, res) => {
             email,
             theme,
             phase1: { completed: false },
-            phase2: { attempts: 0, lastScore: 0, completed: false },
+            phase2: { completed: false },
             phase3: { completed: false },
-            phase4: { attempts: 0, completed: false },
+            phase4: { completed: false },
             phase5: { completed: false },
             phase6: { completed: false },
-            startTime: now,
-            currentPhase: 1,
-            createdAt: now
+            currentPhase: 1
         };
 
         await createTeam(teamId, team);
@@ -549,13 +537,9 @@ app.post('/api/phase1/submit', async (req, res) => {
             return res.status(400).json({ error: 'AI Prompt must contain keyword "VU2050"' });
         }
 
-        const now = new Date().toISOString();
-
         await saveTeam(teamId, {
             phase1: {
-                driveLink: driveLink || '',
                 aiPrompt,
-                timestamp: now,
                 completed: true
             },
             currentPhase: 2
@@ -637,8 +621,6 @@ app.post('/api/phase2/complete', async (req, res) => {
 
         await saveTeam(teamId, {
             phase2: {
-                score: phase2Questions.length,
-                timestamp: new Date().toISOString(),
                 completed: true
             },
             currentPhase: 3
@@ -682,15 +664,10 @@ app.post('/api/phase2/submit', async (req, res) => {
         });
 
         const passed = score === phase2Questions.length; // ALL must be correct
-        const newAttempts = (team.phase2?.attempts || 0) + 1;
 
         const updateData = {
             phase2: {
-                attempts: newAttempts,
-                lastScore: score,
-                timestamp: new Date().toISOString(),
-                completed: passed,
-                answers: answers
+                completed: passed
             }
         };
 
@@ -700,15 +677,14 @@ app.post('/api/phase2/submit', async (req, res) => {
 
         await saveTeam(teamId, updateData);
 
-        console.log(`📝 Phase 2 - Team: ${team.teamName}, Score: ${score}/${phase2Questions.length}, Passed: ${passed}, Attempt: ${newAttempts}`);
+        console.log(`📝 Phase 2 - Team: ${team.teamName}, Score: ${score}/${phase2Questions.length}, Passed: ${passed}`);
 
         res.json({
             success: true,
             score,
             total: phase2Questions.length,
             passed,
-            results,
-            attempts: newAttempts
+            results
         });
     } catch (error) {
         console.error('Phase 2 submit error:', error.message, error.stack);
@@ -772,9 +748,6 @@ app.post('/api/phase3/submit', async (req, res) => {
 
         const updateData = {
             phase3: {
-                score: score,
-                answers: answers,
-                timestamp: new Date().toISOString(),
                 completed: true
             },
             currentPhase: 4
@@ -820,7 +793,6 @@ app.post('/api/phase4/submit', async (req, res) => {
             return res.status(400).json({ error: 'Phase 4 already completed' });
         }
 
-        const attempts = (team.phase4?.attempts || 0) + 1;
         const correctAnswer = 'sum of even-indexed: 90';
         const userAnswer = answer ? answer.trim().toLowerCase() : '';
         const isCorrect = userAnswer === correctAnswer || userAnswer === '90';
@@ -828,9 +800,6 @@ app.post('/api/phase4/submit', async (req, res) => {
         if (isCorrect) {
             await saveTeam(teamId, {
                 phase4: {
-                    attempts: attempts,
-                    answer: answer.trim(),
-                    timestamp: new Date().toISOString(),
                     completed: true
                 },
                 currentPhase: 5
@@ -846,19 +815,9 @@ app.post('/api/phase4/submit', async (req, res) => {
             });
         }
 
-        await saveTeam(teamId, { phase4: { attempts: attempts, completed: false } });
-
-        // Provide hints based on attempts
-        let hint = null;
-        if (attempts >= 2 && attempts <= 4) {
-            hint = phase4Hints[Math.min(attempts - 2, phase4Hints.length - 1)];
-        }
-
         res.json({
             success: false,
             correct: false,
-            attempts,
-            hint,
             message: 'Incorrect output. Try again!'
         });
     } catch (error) {
@@ -956,9 +915,6 @@ app.post('/api/phase5/complete', async (req, res) => {
 
         await saveTeam(teamId, {
             phase5: {
-                score: serverScore,
-                answers: answers,
-                timestamp: new Date().toISOString(),
                 completed: true
             },
             currentPhase: 6
@@ -995,27 +951,18 @@ app.post('/api/phase6/submit', upload.none(), async (req, res) => {
             return res.status(400).json({ error: 'Already completed' });
         }
 
-        const now = new Date();
-        const startTime = new Date(team.startTime);
-        const totalTimeSeconds = Math.floor((now - startTime) / 1000);
-
         await saveTeam(teamId, {
             phase6: {
-                locationAnswer: locationAnswer,
-                timestamp: now.toISOString(),
                 completed: true
             },
-            totalTimeSeconds,
-            finalCompletionTime: now.toISOString(),
             currentPhase: 7 // Completed
         });
 
-        console.log(`🏆 COMPLETED - Team: ${team.teamName}, Total Time: ${totalTimeSeconds}s`);
+        console.log(`🏆 COMPLETED - Team: ${team.teamName}`);
 
         res.json({
             success: true,
             message: 'Congratulations! You have completed CodeHunt-2026!',
-            totalTimeSeconds,
             teamName: team.teamName,
             teamLeader: team.teamLeader
         });
