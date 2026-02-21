@@ -145,16 +145,16 @@ export default function Phase2({ team, setTeam }) {
                         🧩 RIDDLE - Find Your Next Location
                     </p>
                     <p style={{ color: '#e2e8f0', fontStyle: 'italic', lineHeight: '1.8', marginBottom: '15px' }}>
-                        Climb one level, logic gets strong,<br/>
-                        Screens glow bright where coders belong.<br/>
-                        Syntax speaks, machines align,<br/>
-                        First floor hides the next design.
+                        Walk past the slope, take a steady climb,<br />
+                        Where green ideas met management in time.<br />
+                        A wall that shows the campus name,<br />
+                        Look near the symbol of college fame.
                     </p>
                     <p style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.6' }}>
-                        <strong>Hinglish:</strong> Ek floor upar, logic on fire,<br/>
-                        Screens aur code ka perfect choir.<br/>
-                        CS ka adda, focus lab divine,<br/>
-                        First floor pe milega next sign.
+                        <strong>Hinglish:</strong> Slope cross karke thoda aage jao,<br />
+                        Management aur eco ka combo pao.<br />
+                        Deewar pe jahan college ka sign,<br />
+                        Logo ke paas milega tumhara next line.
                     </p>
                 </div>
             </div>
@@ -244,16 +244,16 @@ export default function Phase2({ team, setTeam }) {
                             🧩 RIDDLE - Find Your Next Location
                         </p>
                         <p style={{ color: '#e2e8f0', fontStyle: 'italic', lineHeight: '1.8', marginBottom: '15px' }}>
-                            Climb one level, logic gets strong,<br/>
-                            Screens glow bright where coders belong.<br/>
-                            Syntax speaks, machines align,<br/>
-                            First floor hides the next design.
+                            Walk past the slope, take a steady climb,<br />
+                            Where green ideas met management in time.<br />
+                            A wall that shows the campus name,<br />
+                            Look near the symbol of college fame.
                         </p>
                         <p style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: '1.6' }}>
-                            <strong>Hinglish:</strong> Ek floor upar, logic on fire,<br/>
-                            Screens aur code ka perfect choir.<br/>
-                            CS ka adda, focus lab divine,<br/>
-                            First floor pe milega next sign.
+                            <strong>Hinglish:</strong> Slope cross karke thoda aage jao,<br />
+                            Management aur eco ka combo pao.<br />
+                            Deewar pe jahan college ka sign,<br />
+                            Logo ke paas milega tumhara next line.
                         </p>
                     </div>
                     <br />

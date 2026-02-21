@@ -270,63 +270,63 @@ async function getStats() {
 const phase2Questions = [
     {
         id: 1,
-        question: "Which algorithm technique solves problems by breaking them into subproblems?",
-        options: ["Divide and Conquer", "Random Search", "Greedy Avoidance", "Brute Force"],
-        correctAnswer: 0
+        question: "What is the main role of AI in predictive healthcare?",
+        options: ["Reduce hospital size", "Replace nurses", "Predict diseases before symptoms appear", "Eliminate medical training"],
+        correctAnswer: 2
     },
     {
         id: 2,
-        question: "Which data structure uses FIFO?",
-        options: ["Heap", "Queue", "Graph", "Stack"],
+        question: "Which AI technique is widely used to analyze medical images?",
+        options: ["Blockchain", "Computer Vision", "Reinforcement Learning", "Natural Language Processing"],
         correctAnswer: 1
     },
     {
         id: 3,
-        question: "What does CPU stand for?",
-        options: ["Control Program Utility", "Computer Personal Unit", "Central Processing Unit", "Central Process Unit"],
-        correctAnswer: 2
+        question: "What is an example of AI improving patient care?",
+        options: ["Virtual health assistants", "Manual record keeping", "Paper prescriptions", "Traditional thermometers"],
+        correctAnswer: 0
     },
     {
         id: 4,
-        question: "Which sorting algorithm has average complexity O(n log n)?",
-        options: ["Selection Sort", "Bubble Sort", "Insertion Sort", "Merge Sort"],
+        question: "AI helps reduce human error in healthcare primarily by:",
+        options: ["Removing diagnostics", "Ignoring data", "Slowing processes", "Automating data analysis"],
         correctAnswer: 3
     },
     {
         id: 5,
-        question: "What is the binary representation of decimal 10?",
-        options: ["1110", "1010", "1001", "1100"],
-        correctAnswer: 1
+        question: "Which type of data is MOST important for training healthcare AI models?",
+        options: ["Movie ratings", "Social media posts", "Weather data", "Electronic Health Records (EHR)"],
+        correctAnswer: 3
     },
     {
         id: 6,
-        question: "Which layer of the OSI model handles routing?",
-        options: ["Network", "Transport", "Session", "Presentation"],
-        correctAnswer: 0
+        question: "Robotic surgery systems are mainly controlled by:",
+        options: ["Nurses only", "Government servers", "Human surgeons assisted by AI", "Fully autonomous AI"],
+        correctAnswer: 2
     },
     {
         id: 7,
-        question: "A primary key must be:",
-        options: ["Repeated", "Optional", "Encrypted", "Unique"],
+        question: "What is a key challenge in using AI for healthcare?",
+        options: ["Too many doctors", "Lack of electricity", "Too much paper", "Data privacy concerns"],
         correctAnswer: 3
     },
     {
         id: 8,
-        question: "Which language is primarily used for web page structure?",
-        options: ["Python", "C++", "HTML", "Java"],
-        correctAnswer: 2
-    },
-    {
-        id: 9,
-        question: "What is recursion?",
-        options: ["Memory deletion", "Parallel computing", "Loop unrolling", "Function calling itself"],
+        question: "AI chatbots in healthcare are primarily used to:",
+        options: ["Replace ambulances", "Perform operations", "Manufacture drugs", "Provide basic medical guidance"],
         correctAnswer: 3
     },
     {
+        id: 9,
+        question: "Which field combines AI with drug discovery?",
+        options: ["Civil Engineering", "Astronomy", "Bioinformatics", "Mechanical Design"],
+        correctAnswer: 2
+    },
+    {
         id: 10,
-        question: "Which memory is volatile?",
-        options: ["Hard Disk", "RAM", "SSD", "ROM"],
-        correctAnswer: 1
+        question: "Wearable devices using AI can help monitor:",
+        options: ["Road quality", "Airplane speed", "Building height", "Heart rate and activity"],
+        correctAnswer: 3
     }
 ];
 
@@ -334,38 +334,38 @@ const phase2Questions = [
 const phase3Questions = [
     {
         id: 1,
-        code: `#include <stdio.h>\nint main() {\n    int i, sum = 0;\n    for (i = 1; i <= 5; i++) {\n        if (i % 2 == 0)\n            continue;\n        sum += i;\n    }\n    printf("%d", sum);\n    return 0;\n}`,
+        code: `#include <stdio.h>\nint main() {\n    int a = 5, b = 3;\n    a = a ^ b;\n    b = a ^ b;\n    a = a ^ b;\n    printf("%d %d", a, b);\n    return 0;\n}`,
         question: "What will be the output of this code?",
-        options: ["6", "9", "15", "10"],
+        options: ["5 3", "3 5", "0 0", "8 8"],
         correctAnswer: 1
     },
     {
         id: 2,
-        code: `#include <stdio.h>\nint main() {\n    int a = 5, b = 10;\n    int *p = &a, *q = &b;\n    *p = *q;\n    *q = a;\n    printf("%d %d", a, b);\n    return 0;\n}`,
+        code: `#include <stdio.h>\nint main() {\n    int a = 5;\n    int b = a++ + ++a;\n    printf("%d %d", a, b);\n    return 0;\n}`,
         question: "What will be the output of this code?",
-        options: ["5 10", "10 5", "10 10", "5 5"],
-        correctAnswer: 2
+        options: ["7 12", "6 11", "7 11", "6 12"],
+        correctAnswer: 0
     },
     {
         id: 3,
-        code: `#include <stdio.h>\nint fun(int n) {\n    if (n == 0)\n        return 0;\n    return n % 10 + fun(n / 10);\n}\nint main() {\n    printf("%d", fun(1234));\n    return 0;\n}`,
+        code: `#include <stdio.h>\nint main() {\n    int count = 0;\n    for (int i = 1; i <= 4; i++) {\n        for (int j = 1; j <= i; j++) {\n            count++;\n        }\n    }\n    printf("%d", count);\n    return 0;\n}`,
         question: "What will be the output of this code?",
-        options: ["1234", "4321", "10", "24"],
-        correctAnswer: 2
-    },
-    {
-        id: 4,
-        code: `#include <stdio.h>\nint main() {\n    int arr[] = {1, 2, 3, 4, 5};\n    int *ptr = arr;\n    printf("%d ", *(ptr + 2));\n    ptr++;\n    printf("%d ", *(ptr + 2));\n    return 0;\n}`,
-        question: "What will be the output of this code?",
-        options: ["2 4", "3 5", "3 4", "1 3"],
+        options: ["16", "10", "8", "4"],
         correctAnswer: 1
     },
     {
-        id: 5,
-        code: `#include <stdio.h>\nint main() {\n    int x = 1;\n    switch (x) {\n        case 1: printf("A");\n        case 2: printf("B");\n        case 3: printf("C");\n                break;\n        default: printf("D");\n    }\n    return 0;\n}`,
+        id: 4,
+        code: `#include <stdio.h>\nint power(int base, int exp) {\n    if (exp == 0)\n        return 1;\n    return base * power(base, exp - 1);\n}\nint main() {\n    printf("%d", power(2, 5));\n    return 0;\n}`,
         question: "What will be the output of this code?",
-        options: ["A", "AB", "ABC", "ABCD"],
+        options: ["10", "25", "32", "64"],
         correctAnswer: 2
+    },
+    {
+        id: 5,
+        code: `#include <stdio.h>\n#define SQUARE(x) x * x\nint main() {\n    int result = SQUARE(3 + 1);\n    printf("%d", result);\n    return 0;\n}`,
+        question: "What will be the output of this code?",
+        options: ["16", "7", "10", "9"],
+        correctAnswer: 1
     }
 ];
 
@@ -373,25 +373,22 @@ const phase3Questions = [
 const phase4Code = `#include <stdio.h>
 
 int main() {
-    int arr[5] = {10, 20, 30, 40, 50};
-    int *ptr = arr;
-    int sum = 0, i;
+    int n = 5;
+    int fact = 1, i;
 
-    for (i = 0; i < 5; i++) {
-        if (i % 2 = 0) {
-            sum += *(ptr + i)
-        }
+    for (i = 0; i <= n; i++) {
+        fact = fact * i;
     }
 
-    print("Sum of even-indexed: %d", sum);
+    prinf("Factorial of %d is: %f", n, fact);
     retrun 0;
 }`;
 
 const phase4Hints = [
-    "Look carefully at the if condition - is '=' used for comparison?",
-    "Check for missing semicolons inside the loop body",
-    "Are 'print' and 'retrun' valid C keywords?",
-    "Even-indexed elements are arr[0], arr[2], arr[4] = 10, 30, 50"
+    "Should the loop start from 0? What happens when you multiply by 0?",
+    "Is 'prinf' a valid C function? Check the spelling carefully",
+    "Is '%f' the correct format specifier for an integer? Think about %d vs %f",
+    "'retrun' is not a valid keyword — check the spelling of 'return'"
 ];
 
 // Phase 5 Riddles - 3 Challenges (ALL required to pass)
@@ -399,32 +396,32 @@ const phase5Riddles = [
     {
         id: 1,
         type: "mcq",
-        riddle: "Study the maze below and find the ONLY path from S (Start) to E (Exit). Walls (#) block movement. You can only move Right (→) or Down (↓).\n\n    C0  C1  C2  C3  C4  C5\nR0: [S] [.] [#] [.] [.] [.]\nR1: [#] [.] [.] [.] [#] [.]\nR2: [#] [#] [#] [.] [.] [.]\nR3: [.] [.] [#] [#] [#] [.]\nR4: [#] [.] [.] [.] [#] [.]\nR5: [#] [#] [#] [.] [.] [E]\n\nWhich sequence of moves leads from S to E?",
+        riddle: "Study the maze below and find the ONLY path from S (Start) to E (Exit). Walls (#) block movement. You can only move Right (→) or Down (↓).\n\n    C0  C1  C2  C3  C4  C5\nR0: [S] [.] [#] [.] [.] [.]\nR1: [#] [.] [.] [#] [.] [.]\nR2: [.] [#] [.] [.] [#] [.]\nR3: [.] [.] [#] [.] [.] [#]\nR4: [#] [.] [.] [#] [.] [.]\nR5: [#] [#] [.] [.] [#] [E]\n\nWhich sequence of moves leads from S to E?",
         options: [
-            "→ ↓ → → ↓ ↓ → → ↓ ↓",
-            "→ ↓ → → ↓ → → ↓ ↓ ↓",
-            "→ ↓ → ↓ → → ↓ ↓ → ↓",
-            "→ ↓ → → ↓ → ↓ → ↓ ↓"
+            "→ ↓ → ↓ → ↓ ↓ → → ↓",
+            "→ ↓ → ↓ → ↓ → ↓ → ↓",
+            "→ ↓ → ↓ → ↓ → → ↓ ↓",
+            "→ ↓ → ↓ ↓ → ↓ → → ↓"
         ],
         correctAnswer: 1
     },
     {
         id: 2,
         type: "mcq",
-        riddle: "LOGICAL DEDUCTION: Each CS Module is assigned exactly one function.\n\nCS Modules:\n  1. AlgoCore\n  2. DataNest\n  3. LogicFlow\n  4. ByteWorks\n\nFunctions:\n  A. Algorithms\n  B. Data Structures\n  C. Memory Management\n  D. Control Flow\n\nClues:\n  • DataNest (2) is assigned to Control Flow (D)\n  • AlgoCore (1) is assigned to Data Structures (B)\n  • ByteWorks (4) is NOT assigned to B or D\n  • LogicFlow (3) is assigned to Algorithms (A)\n\nWhat is the correct mapping?",
+        riddle: "LOGICAL DEDUCTION: Each AI System is assigned exactly one healthcare function.\n\nAI Systems:\n  1. Arogya\n  2. MedScan\n  3. PulseNet\n  4. CareBot\n\nHealthcare Functions:\n  A. Diagnosis\n  B. Patient Monitoring\n  C. Medical Records\n  D. Emergency Support\n\nClues:\n  • MedScan (2) is assigned to Diagnosis (A)\n  • Arogya (1) is assigned to Emergency Support (D)\n  • CareBot (4) is NOT assigned to A or D\n  • PulseNet (3) is NOT assigned to C\n\nWhat is the correct mapping (in order 1 to 4)?",
         options: [
-            "AlgoCore→A, DataNest→D, LogicFlow→B, ByteWorks→C",
-            "AlgoCore→B, DataNest→D, LogicFlow→A, ByteWorks→C",
-            "AlgoCore→B, DataNest→C, LogicFlow→A, ByteWorks→D",
-            "AlgoCore→C, DataNest→D, LogicFlow→A, ByteWorks→B"
+            "Arogya→A, MedScan→D, PulseNet→B, CareBot→C",
+            "Arogya→D, MedScan→A, PulseNet→B, CareBot→C",
+            "Arogya→D, MedScan→A, PulseNet→C, CareBot→B",
+            "Arogya→B, MedScan→A, PulseNet→D, CareBot→C"
         ],
         correctAnswer: 1
     },
     {
         id: 3,
         type: "text",
-        riddle: "PATTERN RECOGNITION\n\nStep 1 — Given Values:\n  A = 5,  B = 4,  C = 3,  D = 6\n\nStep 2 — Solve these expressions in order:\n  1) (3 × D) + 1\n  2) (4 × A)\n  3) (B − 3)\n  4) (2 × A) + 4\n  5) (C + 1)\n  6) (1 × A)\n  7) (1 × A)\n\nStep 3 — Convert each result to a letter using A1–Z26\n  (A=1, B=2, C=3 ... Z=26)\n\nWhat is the decoded keyword?",
-        acceptedAnswers: ["standee", "STANDEE", "Standee"]
+        riddle: "PATTERN RECOGNITION\n\nStep 1 — Given Values:\n  A = 6,  B = 5,  C = 4,  D = 7\n\nStep 2 — Solve these expressions in order:\n  1) (2 × D) − 2\n  2) (3 × A) − 3\n  3) (1 × D)\n  4) (3 × B)\n\nStep 3 — Convert each result to a letter using A1–Z26\n  (A=1, B=2, C=3 ... Z=26)\n\nWhat is the decoded keyword?",
+        acceptedAnswers: ["logo", "LOGO", "Logo"]
     }
 ];
 
@@ -788,9 +785,9 @@ app.post('/api/phase4/submit', async (req, res) => {
             return res.status(400).json({ error: 'Phase 4 already completed' });
         }
 
-        const correctAnswer = 'sum of even-indexed: 90';
+        const correctAnswer = 'factorial of 5 is: 120';
         const userAnswer = answer ? answer.trim().toLowerCase() : '';
-        const isCorrect = userAnswer === correctAnswer || userAnswer === '90';
+        const isCorrect = userAnswer === correctAnswer || userAnswer === '120';
 
         if (isCorrect) {
             await saveTeam(teamId, {
