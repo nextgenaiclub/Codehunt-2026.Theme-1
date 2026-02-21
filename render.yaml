@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: codehunt-2026-theme1
+    runtime: node
+    buildCommand: npm run render-build
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: FIREBASE_CREDENTIALS
+        sync: false
