@@ -1,4 +1,4 @@
-const express = require('express');
+﻿const express = require('express');
 const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
@@ -408,7 +408,7 @@ const phase5Riddles = [
     {
         id: 2,
         type: "mcq",
-        riddle: "LOGICAL DEDUCTION: Each AI System is assigned exactly one healthcare function.\n\nAI Systems:\n  1. Arogya\n  2. MedScan\n  3. PulseNet\n  4. CareBot\n\nHealthcare Functions:\n  A. Diagnosis\n  B. Patient Monitoring\n  C. Medical Records\n  D. Emergency Support\n\nClues:\n  • MedScan (2) is assigned to Diagnosis (A)\n  • Arogya (1) is assigned to Emergency Support (D)\n  • CareBot (4) is NOT assigned to A or D\n  • PulseNet (3) is NOT assigned to C\n\nWhat is the correct mapping (in order 1 to 4)?",
+        riddle: "LOGICAL DEDUCTION: Each AI System is assigned exactly one healthcare function.\n\nAI Systems:\n  1. Arogya\n  2. MedScan\n  3. PulseNet\n  4. CareBot\n\nHealthcare Functions:\n  A. Diagnosis\n  B. Patient Monitoring\n  C. Medical Records\n  D. Emergency Support\n\nWhat is the correct mapping (in order 1 to 4)?",
         options: [
             "Arogya→A, MedScan→D, PulseNet→B, CareBot→C",
             "Arogya→D, MedScan→A, PulseNet→B, CareBot→C",
