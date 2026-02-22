@@ -19,9 +19,12 @@ export default function Phase2({ team, setTeam }) {
         const fetchQuestions = async () => {
             try {
                 const res = await fetch(`${API_URL}/phase2/questions`)
+                if (!res.ok) throw new Error('Failed to fetch')
                 const data = await res.json()
                 if (Array.isArray(data)) {
                     setQuestions(data)
+                } else {
+                    throw new Error('Invalid data format')
                 }
             } catch (err) {
                 console.error('Failed to load questions')
@@ -63,6 +66,12 @@ export default function Phase2({ team, setTeam }) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ teamId: team?.teamId, answers: answersArray })
             })
+
+            if (!res.ok) {
+                const errorData = await res.json().catch(() => ({ error: 'Server error' }))
+                throw new Error(errorData.error || 'Submit failed')
+            }
+
             const data = await res.json()
 
             if (!res.ok) {
@@ -122,6 +131,11 @@ export default function Phase2({ team, setTeam }) {
                 <AlertCircle size={60} style={{ color: '#FFD700', marginBottom: '20px' }} />
                 <h2>Please Register First</h2>
                 <p>You need to complete Phase 1 before accessing this phase.</p>
+                <div style={{ marginTop: '20px' }}>
+                    <button onClick={() => window.location.href = '/'} className="btn btn-primary">
+                        Go Home to Resume Progress
+                    </button>
+                </div>
             </div>
         )
     }
@@ -317,9 +331,9 @@ export default function Phase2({ team, setTeam }) {
         <div className="container" style={{ maxWidth: '800px', margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: '30px' }}>
                 <Target size={50} style={{ color: '#FFD700', marginBottom: '15px' }} />
-                <h1>Phase 2: CS Fundamentals Quiz</h1>
+                <h1>Phase 2: AI Healthcare Quiz</h1>
                 <p style={{ fontSize: '1rem', marginTop: '10px', color: '#FFD700' }}>
-                    Theme: Computer Science Fundamentals
+                    Theme: {team?.theme || 'AI in Healthcare'}
                 </p>
                 <p style={{ fontSize: '0.9rem', marginTop: '5px', color: '#ccc' }}>
                     Answer all questions. You must get every answer correct to pass.
